@@ -1,11 +1,11 @@
 import React from 'react'
-import { Col } from 'react-bootstrap'
+
 import Task from './Task'
 
 const TaskList = ({ tasks, status }) => {
   return (
     <div>
-      <div className='task-list-title'>
+      <div className='my-3'>
         <strong>{status}</strong>
       </div>
       {tasks.map((task) => (

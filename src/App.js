@@ -1,27 +1,15 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import TaskPage from './components/TaskPage'
-
-const mockTasks = [
-  {
-    id: 1,
-    title: 'Learn Redux',
-    description: 'The Store, Actions, and Reucers, oh my!',
-    status: 'In Progress',
-  },
-  {
-    id: 2,
-    title: 'Peac on Earth',
-    description: 'No big deal.',
-    status: 'In Progress',
-  },
-]
+import Container from 'react-bootstrap/Container'
 
 const App = () => {
+  const tasks = useSelector((state) => state.tasks.tasks)
   return (
-    <div>
+    <Container className='my-5'>
       <h1>Welcome to Parsnip</h1>
-      <TaskPage tasks={mockTasks} />
-    </div>
+      <TaskPage tasks={tasks} />
+    </Container>
   )
 }
 
