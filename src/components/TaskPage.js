@@ -5,7 +5,7 @@ import TaskList from './TaskList'
 
 const TASK_STATUSES = ['Unstarted', 'In Progress', 'Completed']
 
-const TaskPage = ({ tasks }) => {
+const TaskPage = ({ tasks, onCreateTask, onEditTask }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [showCardForm, setShowCardForm] = useState(false)
@@ -18,7 +18,7 @@ const TaskPage = ({ tasks }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
-    console.log(title, description)
+    onCreateTask(title, description)
     resetForm()
   }
 
@@ -29,7 +29,11 @@ const TaskPage = ({ tasks }) => {
       const statusTasks = tasks.filter((task) => task.status === status)
       return (
         <Col md={4} lg={4} key={status}>
-          <TaskList status={status} tasks={statusTasks} />
+          <TaskList
+            status={status}
+            tasks={statusTasks}
+            onEditTask={onEditTask}
+          />
         </Col>
       )
     })
